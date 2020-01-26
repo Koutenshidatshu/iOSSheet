@@ -7,7 +7,7 @@
   
   UIViewController class is a subclass of UIResponder, and the part of the MVC pattern. A View Controller manages a set of views and helps in making the application’s user interface. It coordinates with model objects and other controller objects. It is known for playing the role for both view objects and controller objects. Each view controller displays its own views for the app content. The views are loaded automatically when the user accesses the view property of view controller in the app. 
 
-     A view controller’s main responsibilities include the following:
+     ### ViewController’s main responsibilities:
 
     - Updating the contents of the views, usually in response to changes to the underlying data.
 
