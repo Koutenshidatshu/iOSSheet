@@ -4,6 +4,7 @@
 
 ## UIKit
 - [X] UIViewController
+  
   UIViewController class is a subclass of UIResponder, and the part of the MVC pattern. A View Controller manages a set of views and helps in making the application’s user interface. It coordinates with model objects and other controller objects. It is known for playing the role for both view objects and controller objects. Each view controller displays its own views for the app content. The views are loaded automatically when the user accesses the view property of view controller in the app. 
 
      A view controller’s main responsibilities include the following:
@@ -56,9 +57,22 @@
     ### What is a navigation stack?
     `“A navigation controller object manages its child view controllers using an ordered array, known as the navigation stack. The first view controller in the array is the root view controller and represents the bottom of the stack. The last view controller in the array is the topmost item on the stack, and represents the view controller currently being displayed.”`
 
+- [X] UINib
 
-- [ ] UICollectionView
+    A object caches the contents of a nib file in memory.
+    Nib files are the quintessential resource type used to create iOS and Mac apps. A nib file is a data archive that essentially contains a set of freeze-dried objects that you want to recreate at runtime. Nib files are used most commonly to store preconfigured windows, views, and other visually oriented objects but they can also store nonvisual objects such as controllers.
+
+    One of the most important objects in a nib file is the File’s Owner object. Unlike interface objects, the File’s Owner object is a placeholder object that is not created when the nib file is loaded. Instead, you create this object in your code and pass it to the nib-loading code. The reason this object is so important is that it is the main link between your application code and the contents of the nib file. More specifically, it is the controller object that is responsible for the contents of the nib file.
+
+    ### About the First Responder
+
+    In a nib file, the First Responder is a placeholder object that represents the first object in your application’s dynamically determined responder chain.
+
+    Each time you ask the NSBundle or NSNib class to load a nib file, the underlying code creates a new copy of the objects in that file
+
+
 - [ ] UITableView
+- [ ] UICollectionView
 - [ ] UIStackView
 - [ ] UIControl
 - [ ] UIPageControl
@@ -82,7 +96,6 @@
 - [ ] setNeedsLayout
 - [ ] layoutIfNeeded
 - [ ] UIEvent
-- [ ] UINib
 
   ## Swift
 
