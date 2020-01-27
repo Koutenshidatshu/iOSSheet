@@ -71,7 +71,39 @@
     Each time you ask the NSBundle or NSNib class to load a nib file, the underlying code creates a new copy of the objects in that file
 
 
-- [ ] UITableView
+- [X] UITableView
+  
+    `UITableView` manages the basic appearance of the table, display a single column of vertically scrolling content.
+
+    ### There are two protocols responsibilities in   `UITableView`:
+   
+   - `Data Source` provides data to the table view. Include thing like number of sections, the number of rows in each sections, title of section headers and footers and table view rows.
+   - `Delegate` manage layout and data manipulation. Like height or the identation of cells, insert, delete, and re-ordering for each rows.
+
+    `UITableViewDataSource` has two require protocols. 
+    - `tableView(_:numberOfRowsInSection:)` method tells the table view how many elements a section contains.
+    - `tableView(_:cellForRowAt:)` method needs to return configured cells for a specific row.
+
+    `UITableViewDataSourcePrefetching` in iOS 10, Apple has introduced prefetching API prefetch data source, that enables table view’s data source to begin loading smoothly before `cellForRowAt` method called. This is useful for download large method obtain from disk / server. That also give some laziness in accesing data models.
+
+    > set the view controller to table view prefetch 
+    ```
+    tableView.prefetchDataSource = self
+    ```
+    Initiate asynchronous loading for data required to specific index path.
+
+    ```
+    extension ViewController: UITableViewDataSourcePrefetching {
+        func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+            print("prefetch Rows At \(indexPaths)")
+    }
+    ```
+    Mechanism prefetch is When the user scrolls down, `tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) `get’s called and index path holds for the next 10 rows. 
+
+
+
+
+
 - [ ] UICollectionView
 - [ ] UIStackView
 - [ ] UIControl
