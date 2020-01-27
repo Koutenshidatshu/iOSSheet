@@ -101,10 +101,30 @@
     Mechanism prefetch is When the user scrolls down, `tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) `get’s called and index path holds for the next 10 rows. 
 
 
+- [X] UICollectionView
+  
+    in iOS 10 `UICollectionViewDataSourcePrefetching` just like `UITableView`, collection view can implement smooth scrolling performance. 
 
+    ### To implement Prefetch required 3 methods: 
+    > collectionView(_:numberOfItemsInSection:)
+    > collectionView(_:cellForItemAt:)
+    > collectionView(_:prefetchItemsAt:)
 
+    `UICollectionViewDataSourcePrefetching` contain two functions: 
+    ```
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt     indexPaths: [IndexPath]) {
+        print("prefetch Rows At \(indexPaths)")
+    }
+    ```
 
-- [ ] UICollectionView
+    ```
+    func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
+        print("prefetch Rows At \(indexPaths)")
+    }
+    ```
+
+    `collectionView(_:cancelPrefetchingForItemsAt:)` this method to revert or clean up data source when prefetch for array of cells has been canclled by Collection View. Example when user change direction for scrolling.
+
 - [ ] UIStackView
 - [ ] UIControl
 - [ ] UIPageControl
