@@ -125,7 +125,27 @@
 
     `collectionView(_:cancelPrefetchingForItemsAt:)` this method to revert or clean up data source when prefetch for array of cells has been canclled by Collection View. Example when user change direction for scrolling.
 
-- [ ] UIStackView
+- [x] UIStackView
+    In iOS 9, The Advantage of `UIStackView` basically to simpler way to specify layout, like nested layout. 
+    ### Cool things in UIStackView
+    > `arrangedStackView` it's kind of hearts of `UIStackView`, it's array of UI views and it's represent the items that are in stack. 
+    > `layoutMargins` control the margins around the edges of the stack. But need to change `isRelatedLayoutMargins` set to `true` to configure this method. 
+    > `distribution: UIStackViewDistribution` control of arranged subviews along the stack derection of the axis.
+
+    > Changing Content Dynamiclly
+        - stack view automatically updates it's layout vased on content changes, like add or remove arranged subviews. Properties can be changed at run time to allow dynamic changes. And `isHidden` properly has to special for arranged subviews, that effects to the items arranged subviews. 
+  
+    > UIStackView with Auto Layout
+    It's work seamlessly, because actually creating auto layout constraints internally.
+
+    `backgroundColor` property has no effect on `UIStackView`, because it's always is a clear color and because `UIStackView`
+    doesn't render itself, it's only layout it's sub views.
+
+    `drawRect()` doesn't ever called on it, it will no effect. Just like rounded corner and line corner. 
+
+    `setCustomSpacing()` in iOS 11 can set custom spacing between different views in the stack, this useful when using custom in stackview.
+
+
 - [ ] UIControl
 - [ ] UIPageControl
 - [ ] UISlider
