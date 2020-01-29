@@ -126,6 +126,7 @@
     `collectionView(_:cancelPrefetchingForItemsAt:)` this method to revert or clean up data source when prefetch for array of cells has been canclled by Collection View. Example when user change direction for scrolling.
 
 - [x] UIStackView
+  
     In iOS 9, The Advantage of `UIStackView` basically to simpler way to specify layout, like nested layout. 
     ### Cool things in UIStackView
 
@@ -177,6 +178,56 @@
 - [ ] UIEvent
 
   ## Swift
+
+- [X] Callback function to send a completion handler
+
+    This function is useful to tell whatever is calling that function to perform something or give some data. 
+    ### Example : 
+
+    ```
+    func dataTask(with request: URLRequest,
+        completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void)
+        -> URLSessionDataTask {
+        // make an URL request
+        // wait for results
+        // check for errors and sometginf
+        completionHandler(data, response, error)
+        // return the data task
+    }
+    ```
+
+    In the argument for callback is a closure `(Data?, URLResponse?, Error?)`
+    and return void
+
+    ```
+    let task = urlSession.dataTask(with: urlRequest, completionHandler: {
+        (data, response, error) in
+        // this is where the completion execute the data
+    })
+    task.resume()
+    ```
+
+    ### And simpler way to call function
+
+    if a closure in the last argument, can using trailing closure syntax and way simpler. 
+
+    ```
+    let task = session.dataTask(with: urlRequest) {
+        (data, response, error) in
+        // this is where the completion handler execute the data
+    }
+    task.resume()
+    ``` 
+
+    When we call the method and we need to execute the something or need to wait method to process, the way is using complete handler, then the code will called completion handler. Best way using completion handler is for asynchronous call,by the using we fire the the network call and not to wait around for these response, when network call is done, the completion handler quickly excalate to notify. So we can doing something after that. 
+    another example in Apple OS SDK:
+
+   `(void)animateWithDuration:(NSTimeInterval)duration 
+                 animations:(void (^)(void))animations 
+                 completion:(void (^)(BOOL finished))completion;`
+
+    > Animate changes to one or more views using the specified duration and completion handler. Completion A block object to be executed when the animation sequence ends. This block has no return value and takes a single Boolean argument that indicates whether or not the animations actually finished before the completion handler was called. If the duration of the animation is 0, this block is performed at the beginning of the next run loop cycle. This parameter may be NULL.
+
 
 - [ ] Overloading
 - [ ] Variadic Parameters
