@@ -154,7 +154,26 @@
     `setCustomSpacing()` in iOS 11 can set custom spacing between different views in the stack, this useful when using custom in stackview.
 
 
-- [ ] UIControl
+- [X] UIControl
+
+    Features of controls system views as controls are button, switch, slider, page control, date picker, segmented control and stepper. This class inherites from `UIView`.
+
+    ### Target Action
+    Control have various states and change visually according to the state. And it generates various events according to the touch type.
+
+    `addTarget(_:action:for: )`
+    thi method receives the object that the method is implemented as first paramater. The action paramater is implemented as a selector signature matches any of the signature and cannot be nil. Selector is a concept used in Object c. It's described as a message that can be send to an object or class.
+    Example: 
+    ```
+    @objc func action(_ sender: Any) {
+
+    }
+    ```
+    ```
+    let selector = #selector(action(_:))
+    btn.addTarget(self, action: selector, for: .touchUpInside)
+    ```
+
 - [ ] UIPageControl
 - [ ] UISlider
 - [ ] UIStepper
