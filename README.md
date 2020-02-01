@@ -165,7 +165,8 @@
     thi method receives the object that the method is implemented as first paramater. The action paramater is implemented as a selector signature matches any of the signature and cannot be nil. Selector is a concept used in Object c. It's described as a message that can be send to an object or class.
     Example: 
     ```
-    @objc func action(_ sender: Any) {
+    @objc func action(_ sender: Any) { 
+        // the sender paramater is corresponds to control that calls the action method
 
     }
     ```
@@ -173,7 +174,7 @@
     let selector = #selector(action(_:))
     btn.addTarget(self, action: selector, for: .touchUpInside)
     ```
-
+  
 - [ ] UIPageControl
 - [ ] UISlider
 - [ ] UIStepper
@@ -305,7 +306,51 @@
 - [ ] Implicitly Required Initializers
 - [ ] Mutating Func
 - [ ] Expressible by Literal
-- [ ] Generic
+- [X] Generic
+
+    Generic code is the code can write flexible code, reusable functions and type can work with any type with subject requirement to define. That function can avoid duplication and express intent in aclear way.
+    That generics most powerful feature in Swift.
+
+    ### Example: 
+
+    ```
+    func swapTwoStrings(_ a: inout String, _ b: inout String) {
+        let temporaryA = a
+        a = b
+        b = temporaryA
+    }
+    ```
+
+    ```
+    let swapString = swapTwoStings("success", "fail")
+    ```
+
+    if add more function to swap double 
+    ```
+    func swapTwoDoubles(_ a: inout Double, _ b: inout Double) {
+        let temporaryA = a
+        a = b
+        b = temporaryA
+    }
+
+    let swapDouble = swapTwoDoubles(3.0 , 10.0)
+    ```
+
+    type is different `addInts()` and `addDoubles()`, because the requirements are different, but the identical is the same. Coinsidearable it can be write to a single function. 
+
+    ```
+    func swapTwoValues<T>(_ a: inout T, _ b: inout T) {
+        let temporaryA = a
+        a = b
+        b = temporaryA
+    }
+
+    ```
+
+    these function used a placeholder type name `T` in this case. The placeholder must be same type, whatever it presents. The brackets `<T>` is to tell is a placeholder type name in this `swapTwoValues`. each time function called `T` is inferred from types to value passes to function. 
+    This `swapTwoValues` function can work with any type. 
+
+
 - [ ] Type Constraints
 - [ ] Explicit Specialization
 - [ ] Generic Invariance
