@@ -350,9 +350,45 @@
     these function used a placeholder type name `T` in this case. The placeholder must be same type, whatever it presents. The brackets `<T>` is to tell is a placeholder type name in this `swapTwoValues`. each time function called `T` is inferred from types to value passes to function. 
     This `swapTwoValues` function can work with any type. 
 
+  - [X] Type Constraints
+    
+    Type Constraints is Generic declatration type to the generic type paramater, the types are eligible to be used. Example, is to put `:` after the placeholder, the type after colon can be class or protocol name. `swapTwoValues<T: Comparable>` that adding Comparable to use the function can adopts Comparable protocol and can be compared with operator (> , > , == , >=, etc). 
 
-- [ ] Type Constraints
-- [ ] Explicit Specialization
+
+    ### WARNING
+    A generic protocol type can be used only as a type constraint. If you try to use it in any other way, you’ll get a compile error. This restriction can be quite frustrating. The standard way of circumventing it is called type erasure; for an excellent discussion.
+
+
+- [X] Explicit Specialization
+  
+    In some case if the placeholder type can't assigned in the inference. There two ways of epxlicit specialization: 
+
+    > Generic Protocol with assosiated type
+    The addopter of protocol resolved manually assosiated type through a type alias define with assosiated type as explicit type: 
+
+    ```
+    protocol Screen {
+        associatedtype ItemType // must specify this what is ItemType
+        var items: [ItemType] { get set }
+    }
+
+    class MainScreen: Screen { // class that conforms to Screen
+        typealias ItemType = String // confrom ItemType is String
+        var items = [String]()
+    }
+    ```
+
+    > Generic object type
+    If the object type is generic, can mannualy  using `<>` to declare generic type object.
+
+    ```
+    class Dog<T> {
+        var name : T?
+    }
+    let d = Dog<String>()
+    ```
+
+
 - [ ] Generic Invariance
 - [ ] Associated Type Chains
 - [ ] Where Clauses
