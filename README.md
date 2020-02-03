@@ -175,11 +175,58 @@
     btn.addTarget(self, action: selector, for: .touchUpInside)
     ```
   
-- [ ] UIPageControl
-- [ ] UISlider
-- [ ] UIStepper
-- [ ] UISearchTextField
-- [ ] UISearchBar
+- [X] UIPageControl
+    
+    A control a horizontal seris of dots, each page. Which is configured to display information for more than one location. 
+    Inheritance from `UIControl`. 
+
+    ### Example: 
+    ```
+    private var pageControl = UIPageControl()
+
+    private func setupPageControl() {
+        pageControl.numberOfPages = page.count
+        pageControl.currentPage = 0
+        view.addSubView(pageControl)
+    }
+    ```
+- [X] UISlider
+  
+  `UISlider` also Inheritance from `UIControl`. This control usage for range between minium value to maximum value. The event value change is corresponded by user interaction by using method `addTarget(_:action:for:)`. This method creating connection between interface builder and user interaction, providing information that give to respond value of change int the slider.
+
+- [X] UIStepper
+
+    `UIStepper` also Inheritance from `UIControl`. This control usage for increment and decrement a value. By default `UIStepper` by pressing and holding repeatedly the rate change will increase or decrease continuesly. 
+
+- [X] UISearchBarController
+
+    New in iOS 13+, can allow to customize by exposing some methods like: 
+    > SearchTextfield property
+    ```
+    let textField = search.searchBar.searchTextField
+    ```
+    some customize background color, fonts and etc on search text field.
+    
+    > Can hide cancel button and scoped bars
+    ```
+    search.automaticallyShowsCancelButton = false
+    search.automaticallyShowsScopeBar = false
+    search.showsSearchResultsController = true
+    ```
+
+    > Search Tokens
+    This is new class introduce in iOS 13, inheritance from `NSObject`, and representing query in rich text and icons. And also can disabling to copying and deletion search tokens.
+
+- [X] UISearchTextField
+
+    New in iOS 13+, Can customize the apperance of the search Bar. And no longer access private component to customize. 
+    ```
+    searchBar.searchTextField.backgroundColor = .blue
+    searchBar.searchTextField.textColor = .white
+    ```
+    But the limitation is cannot change bar style. 
+
+
 - [ ] UIToolbar
 - [ ] UITabBar
 - [ ] UISegmentedControl
