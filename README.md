@@ -158,6 +158,8 @@
 
     Features of controls system views as controls are button, switch, slider, page control, date picker, segmented control and stepper. This class inherites from `UIView`.
 
+    ![image](https://ibb.co/1LfvYSC)
+
     ### Target Action
     Control have various states and change visually according to the state. And it generates various events according to the touch type.
 
@@ -227,9 +229,44 @@
     But the limitation is cannot change bar style. 
 
 
-- [ ] UIToolbar
-- [ ] UITabBar
-- [ ] UISegmentedControl
+- [X] UIToolbar
+  
+  Toolbar can be usage for custom textfield as `inputAccessoryView` properly. Just like right above the keyboard such reset button. 
+
+  code : 
+  ```
+    let bar = UIToolbar()
+    let reset = UIBarButtonItem(title: "Reset", 
+    style: .plain, target: self, 
+    action: #selector(resetTapped))
+    bar.items = [reset]
+    bar.sizeToFit()
+    textField.inputAccessoryView = bar
+  ```
+
+- [X] UITabBar
+
+  In general Tabbar in iOS is appears at the bottom app. This represents button can be tapped to quickly move to another page. In iOS 13+, tab bar can be customize using `standardAppearance` property. 
+
+  ### Example :
+
+  ```
+  let appearance = UINavigationBarAppearance()
+  appearance.configureWithOpaqueBackground()  
+  appearance.titleTextAttributes = [.foregroundColor: color] 
+  appearance.largeTitleTextAttributes = [.foregroundColor: color]
+  navigationBar.standardAppearance = appearance 
+  ```
+  Different layour appreance 
+  ```
+  .compactApperance (small iPhone screen, landscape)
+  .scrollEdgeAparance (large titles)
+  ```
+
+- [X] UISegmentedControl
+
+    In iOS 13+ `UISegmentedControl` got some updates. `tintColor` does not work anymore. cannot change the apprance `UISegmentedControl`. But that Apple make new property called `selectedSegmentTintColor`. By that can change caolor of sliding control.
+    
 - [ ] Content Hugging Priority
 - [ ] Content Compression Priority
 - [ ] Safe Area
