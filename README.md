@@ -266,10 +266,25 @@
 - [X] UISegmentedControl
 
     In iOS 13+ `UISegmentedControl` got some updates. `tintColor` does not work anymore. cannot change the apprance `UISegmentedControl`. But that Apple make new property called `selectedSegmentTintColor`. By that can change caolor of sliding control.
-    
-- [ ] Content Hugging Priority
-- [ ] Content Compression Priority
-- [ ] Safe Area
+
+- [X] Content Hugging Priority
+
+    Sets the priority in constraint for text being larger, higher value to restrict to the view to grow larger than content.
+
+
+    > [content huging] ---> Text <--- [content huging]
+
+- [X] Content Compression Priority
+  
+    sets the priority in constraint for text being smaller, higher value to restrict shrink smaller than content.
+    >  
+          content compression   
+                <---->
+                Text     
+- [X] Safe Area
+
+    Safe area layout guide is a fature to resstrict edge views for don't get clipped by rounded corner and notch in iphone X. Apple sugest that don't place any control outside safe area, it's for miss touched in the notch. If you have toolbar in app, must toolbar on the top safe area, if you dont the tool bar cannot be touched because notch in bottom iphone X has mission control access. or you have a scroll view or table view, dont forget to bottom scroll view must be top at safe area. If you scroll to bottom in iphone X, if on bottom has text, it will messy around safe area.
+
 - [ ] Margins
 - [ ] UIBounds
 - [ ] UIFrame
