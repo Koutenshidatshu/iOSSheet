@@ -285,15 +285,48 @@
 
     Safe area layout guide is a fature to resstrict edge views for don't get clipped by rounded corner and notch in iphone X. Apple sugest that don't place any control outside safe area, it's for miss touched in the notch. If you have toolbar in app, must toolbar on the top safe area, if you dont the tool bar cannot be touched because notch in bottom iphone X has mission control access. or you have a scroll view or table view, dont forget to bottom scroll view must be top at safe area. If you scroll to bottom in iphone X, if on bottom has text, it will messy around safe area.
 
-- [ ] Margins
-- [ ] UIBounds
-- [ ] UIFrame
+- [X] Margins
+
+    `layoutmargins` provide visual buffer from view to content and content outside of the view bounds. The value for each edge (top, botto, leading, trailing) to the view.
+
+    ### Example: 
+    ```
+    self.view.layoutMargins = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+    ```
+    `layoutMargins` property deprecated in iOS 11, and replace to `directionalLayoutMargins`. 
+
+    Change the default layour margins
+    Using `directionalLayoutMargins` property can change default values to new value to view. Also in XIB size inspector to set the property. 
+
+- [X] UIBounds vs UIFrame
+
+    Bounds of UIView is rectangle, represented as (x,y) to it's own coordinate system (0,0)
+    Frame of UIView is rectangle, represented as (x,y) to it's superView 
+    coordinate system (0,0)
+    When the frame property of a view is modified, the view's center and/or bounds are also modified.
+    
 - [ ] UIShadow
 - [ ] UIRect
 - [ ] UIBezierPath
-- [ ] layoutSubViews
-- [ ] setNeedsLayout
-- [ ] layoutIfNeeded
+- [X] layoutSubViews
+
+    Apple docs says don't call this method directly. 
+    If you want to force update the layout call the `setNeedsLayout` instead to do sp prior to the next drawing update. If you want to update the layout of the views immediatelly call, the `layoutIfNeeded`. 
+
+    The default implementation uses any constraints you have set to determine the size and position of any subviews.
+
+
+- [X] setNeedsLayout
+
+    This method using for tell the system want to layour and redraw that view and the subviews for the update. This is asynchronous activity because the method complete automatically. 
+
+    > Apple doc says: Call this method on your application’s main thread when you want to adjust the layout of a view’s subviews. This method makes a note of the request and returns immediately. Because this method does not force an immediate update, but instead waits for the next update cycle, you can use it to invalidate the layout of multiple views before any of those views are updated. This behavior allows you to consolidate all of your layout updates to one update cycle, which is usually better for performance.
+
+- [X] layoutIfNeeded
+
+    `layoutIfNeeded` synchronous to tell the system to redraw of views and subviews. When using Auto Layout, the layout engine updates the position of views as needed to satisfy changes in constraints. Using this method to update layout immediately.
+    
+
 - [ ] UIEvent
 
   ## Swift
