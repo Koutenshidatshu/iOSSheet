@@ -305,7 +305,42 @@
     coordinate system (0,0)
     When the frame property of a view is modified, the view's center and/or bounds are also modified.
     
-- [ ] UIShadow
+- [X] UIShadow
+    
+    `UIShadow` Adding shadow to components, Shadow is powerful components to make user interface look 3D. But im just little confuse when adding shadow and make it rounded corner. The corner wilk be rounded, but the shadow is missing. And if you add `maskToBounds` to false shadow will appear but corner not be rounded. The reason is `maskToBoubnnds` it clip everything outide the layer, the shadow keep drawing in outside in layer but the view was clipped. And the shadow not appear. Conclusion cannot same layer for this effect. 
+
+    > The Solution is rounded corner applied to `containerView`. And the shadow is follow to parent view.
+
+    ### Exampple 
+    ```
+    class RoundedShadow: UIView {
+        let containerView = UIView()
+        let rounderRadius = 24
+
+        func setupRoundedShadow() {
+            layer.backgroundColor = UIColor.clear.cgColor
+            layer.shadowColor = UIColor.black.cgColor
+            layer.shadowOffset = CGSize(width: 0, height: 1.0)
+            layer.shadowOpacity = 0.2
+            layer.shadowRadius = 4.0
+        
+            containerView.layer.cornerRadius = cornerRadius
+            containerView.layer.masksToBounds = true
+      
+            addSubview(containerView)
+        }
+    }
+
+    ```
+
+    Another soulution i found in stack overflow: 
+    If dont want to add container view another solution is 
+    adding bezier path in shadow layer. Its make shadow will follow corner radius path
+
+    ```
+    shadowLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius).cgPath
+    ```
+    
 - [ ] UIRect
 - [ ] UIBezierPath
 - [X] layoutSubViews
