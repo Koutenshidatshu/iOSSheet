@@ -340,7 +340,7 @@
     ```
     shadowLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius).cgPath
     ```
-    
+
 - [ ] UIRect
 - [ ] UIBezierPath
 - [X] layoutSubViews
@@ -409,9 +409,11 @@
     When we call the method and we need to execute the something or need to wait method to process, the way is using complete handler, then the code will called completion handler. Best way using completion handler is for asynchronous call,by the using we fire the the network call and not to wait around for these response, when network call is done, the completion handler quickly excalate to notify. So we can doing something after that. 
     another example in Apple OS SDK:
 
-   `(void)animateWithDuration:(NSTimeInterval)duration 
+   ```
+   (void)animateWithDuration:(NSTimeInterval)duration 
                  animations:(void (^)(void))animations 
-                 completion:(void (^)(BOOL finished))completion;`
+                 completion:(void (^)(BOOL finished))completion
+    ```
 
     > Animate changes to one or more views using the specified duration and completion handler. Completion A block object to be executed when the animation sequence ends. This block has no return value and takes a single Boolean argument that indicates whether or not the animations actually finished before the completion handler was called. If the duration of the animation is 0, this block is performed at the beginning of the next run loop cycle. This parameter may be NULL.
 
@@ -424,11 +426,43 @@
 - [ ] Function as Value
 - [ ] Anonymous Functions
 - [ ] Define-and-Call
-- [ ] Closures
+- [X] Closures
+
+    Use function just like any other type such as string and integers. We can create function and assign to a variable, and call that function using that variable. And even pass function into other function as paramaters. 
+
+    ### Example: 
+    ```
+    let driving = {
+        print("i am driving a car")
+    }
+
+    driving()
+
+    let function = { (paramaters) -> return type in
+        //statements
+    }
+    ```
+
+    ### function can be assign variable like :
+    ```
+    func add(value1: Int, value2: int) -> Int {
+        return value1 + value2
+    }
+    var mathFunction: (Int, Int) -> Int = add
+    ```
 - [ ] Function Returning Function
 - [ ] Escaping Closures
 - [ ] Curried Functions
-- [ ] Selectors
+- [X] Selectors
+
+    A way of referring to functions without calling the function, usually use for calling the function later on. 
+
+    ```
+    let buttonTapped = #selector(ViewController.buttonTapped)
+    NotificationCenter.default.addObserver(self, selector: .buttonTapped, 
+                                       name: "buttonTapped", 
+                                       object: nil)
+    ```
 - [ ] Computed Variable
 - [ ] Computed Properties
 - [ ] Property Wrappers
