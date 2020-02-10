@@ -472,7 +472,23 @@
 - [ ] Lazy Initialization of Instance Properties
 - [ ] Character and String Index
 - [ ] Range
-- [ ] Tuple
+- [X] Tuple
+
+    Store several value in a single value. 
+
+    ### Chararistic tuples:
+    1. Can't add or remove items from a tuple because tuple is fixed size.
+    2. Can't change type of items in a tuple, type alwasy have a same type when tuple created.
+    3. Can access items in tuple using numerical position or by naming them. 
+
+    ```
+    var name = (first: "justin", last "beiber")
+    // using numerical position
+    name.0
+
+    // using name
+    name.first
+    ```
 - [ ] Optional
 - [ ] Initializers
 - [ ] Properties
@@ -498,7 +514,51 @@
 - [ ] Type as Value
 - [ ] Summary of Type Terminology
 - [ ] Comparing Types
-- [ ] Protocols
+- [X] Protocols
+
+    List of criteria or contracts that type must conform to like property names and methods. Protocol allow to treat many object the same way, because the the prortocol implement all the behaviour to required to make protocol works.
+
+    ```
+    protocol Identities {
+        var id: String {get set} //this protocol require all conforming 
+        // types to have id string can be read and or written.
+    }
+
+    struct User: Identities {
+        var id: String 
+        // this struct conform to protocol Identities
+    }
+
+    func displayID(things: Identities) {
+        // write function to accept Identities object
+        print("My ID is \(things.id)")
+    }
+    ``` 
+
+    > Can use {get set} in protocol to make read-write variables or {get } to make read only variables. Using just {set} is not allowed.
+
+- [X] Protocol Inheritance
+  
+  Protocol can inherite form another. Unlike classes, can inherit multiply protocol at the same time.
+
+  ```
+  protocol Payable {
+      func calculatePaySlip() -> Int
+  }
+
+  protocol NeedsToTraining {
+      func study()
+  }
+  protocol Holiday {
+      func takeVacation(days: Int
+  }
+  ```
+
+  > Can create single protocol can confrom to all protocol. 
+  ```
+  protocol Emplotee: Payable, NeedsToTraining, Holiday { }
+  ```
+
 - [ ] Protocol Type Testing and Casting
 - [ ] Declaring a Protocol
 - [ ] Protocol Composition
