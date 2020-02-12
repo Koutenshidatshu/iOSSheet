@@ -464,7 +464,62 @@
                                        object: nil)
     ```
 - [ ] Computed Variable
-- [ ] Computed Properties
+- [X] Computed Properties
+
+    Type properties which will calculate a value every time they called. And value will changed each time calling that properties.
+
+    ```
+    var x = 100
+    var y = 200
+
+    var multiply: Int {
+        return x*y
+    }
+
+    print(multiply) // 20000 computed property get called and getter will return x*y
+    The `get` keyword makes the computed property readable
+    ```
+
+    Computed properties can be readable and writeable, using `get` and `set`. 
+
+    ```
+    var salaryPerMonth = 100
+    var salaryPerDay: Int {
+        get { return salaryPerMonth/22 }
+        set (newSalary) {
+            return salaryPerMonth = newSalary * 100
+        }
+    }
+    salaryPerMonth = 1000
+    salaryPerDay // return 45
+
+    salaryPerMonth = 500
+    salaryPerDay // return 22
+
+    ```
+
+    Computed properties in Enums
+
+    ```
+    enum Vehicles {
+    case car
+    case motor
+    
+    var description: String {
+        switch self {
+        case .car: return "4 wheels"
+        case .motor: return "2 wheels"
+            }
+        }
+    }
+
+    var batCar = Vehicles.car
+    batCar.description // 2 wheels
+
+    var tronMotor = Vehicles.motor
+    tronMotor.description // 4 wheels
+    ```
+
 - [ ] Property Wrappers
 - [ ] Setter Observers
 - [ ] Lazy Initialization
