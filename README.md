@@ -521,7 +521,34 @@
     ```
 
 - [ ] Property Wrappers
-- [ ] Setter Observers
+- [x] Setter Observers
+    
+    Setter Observer is for inject functionally to stored properties. 
+    `willSet` and `didSet` observer not called when properties first initialized, 
+    Purpose of Setter observer is usually for sending notification or synchronisation, etc ...
+
+    ```
+    var s = "whatever" {
+        willSet {
+            print("new value : \(newValue)")
+        }
+        didSet {
+            print("old value : \(oldValue)")
+            s = "something else"
+        }
+    }
+    s = "first"
+    print(s)
+
+    output: 
+    new value : first
+    old value : whatever
+    something else
+
+    ```
+    By default, `didset` receive old value, and replace as the new value of the variable, as old value. The new value is already prepared in the stored variable, and `didSet` function can access it there.
+
+    
 - [ ] Lazy Initialization
 - [ ] Singleton
 - [ ] Lazy Initialization of Instance Properties
