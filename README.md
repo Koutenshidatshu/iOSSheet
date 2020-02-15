@@ -419,7 +419,23 @@
 
 
 - [ ] Overloading
-- [ ] Variadic Parameters
+- [X] Variadic Parameters
+
+    Paramater in function can be accept zero or more values of specific type. Using `(...)` that paramater means can be passed multiply numbers of input values. 
+    In Swift has method `print` takes Variadic paramaters. 
+
+    ```
+    print("say hoo", 3 , true) // say hoo 3 true 
+
+    func sayStrings(_ arrayOfStrings:String ...) {
+        for s in arrayOfStrings { print(s) }
+    }
+
+    sayStrings("hey", "hoo" , " sorry")
+    ```
+
+    The value of Variadic Parameters are made available with function as array of appropriate type. 
+    
 - [ ] Modifiable Parameters
 - [ ] Function in Function
 - [ ] Recursion
@@ -547,7 +563,7 @@
 
     ```
     By default, `didset` receive old value, and replace as the new value of the variable, as old value. The new value is already prepared in the stored variable, and `didSet` function can access it there.
-
+    Setter observer functions are not called when the stored variable is initialized or when the didSet function changes the stored variable’s value. 
     
 - [ ] Lazy Initialization
 - [ ] Singleton
